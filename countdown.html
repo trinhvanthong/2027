@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2027</title>
+    <script>
+
+        var deadline = new Date("Feb 1, 2027 12:22:22").getTime();
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var t = deadline - now;
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((t % (1000 * 60)) / 1000);
+            document.querySelector("#d").innerHTML = days +"d";
+            document.querySelector("#h").innerHTML = hours + "h";
+            document.querySelector("#m").innerHTML = minutes +"m";
+            document.querySelector("#s").innerHTML = seconds+ "s";
+
+            if (t < 0) {
+                clearInterval(x);
+                document.querySelector("#d").innerHTML = 0;
+                document.querySelector("#h").innerHTML = 0;
+                document.querySelector("#m").innerHTML = 0;
+                document.querySelector("#s").innerHTML = 0;
+            }
+        }, 1000);
+    </script>
+</head>
+
+<body style="background-color: black; min-height: 100vh;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+    <br>
+    <div style="display: flex; justify-content: center; margin-top: 35vh;">
+        <div style="color:aliceblue;  padding: 25px; font-size: 101px;" id="d"></div>
+        <div style="color:aliceblue;  padding: 25px; font-size: 101px;" id="h"></div>
+        <div style="color:aliceblue;  padding: 25px; font-size: 101px;" id="m"></div>
+        <div style="color:aliceblue;  padding: 25px; font-size: 101px;" id="s"></div>
+    </div>
+</body>
+
+</html>
